@@ -51,7 +51,7 @@
   },
   {
     "name": "open-questions-and-noise",
-    "notes": "Notes from standup\nAgenda: sprint review\nStill unclear who owns the migration timeline?\nHaven't heard back from finance on the budget, no update\nThis is just a note, not a task",
+    "notes": "Notes from standup\nAgenda: sprint review\nStill unclear who owns the migration timeline?\nHaven't heard back from finance on the budget yet\nThis is just a note, not a task",
     "expected": {
       "minActionItems": 0,
       "owners": [],
