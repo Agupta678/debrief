@@ -1,0 +1,62 @@
+[
+  {
+    "name": "clear-ownership-explicit-date",
+    "notes": "Weekly product sync\n- Priya will draft the onboarding flow spec by Thursday\n- Dan to follow up with the vendor on pricing by Friday",
+    "expected": {
+      "minActionItems": 2,
+      "owners": ["Priya", "Dan"],
+      "minDecisions": 0,
+      "minOpenQuestions": 0
+    }
+  },
+  {
+    "name": "implied-ownership-team-word",
+    "notes": "Launch review\n- team agreed export feature is priority now, 3 customers churned, escalate ASAP\n- everyone needs to review the Q3 budget doc, still hasn't been scheduled",
+    "expected": {
+      "minActionItems": 1,
+      "owners": ["Team"],
+      "minDecisions": 0,
+      "minOpenQuestions": 0
+    }
+  },
+  {
+    "name": "no-owner-unassigned",
+    "notes": "reminder that the design review is Monday\nneeds to confirm the beta launch date, no date committed yet",
+    "expected": {
+      "minActionItems": 1,
+      "owners": ["Unassigned"],
+      "minDecisions": 0,
+      "minOpenQuestions": 0
+    }
+  },
+  {
+    "name": "relative-due-date",
+    "notes": "Mike will chase legal on the compliance doc next Monday\nSarah is going to send the deck tomorrow",
+    "expected": {
+      "minActionItems": 2,
+      "owners": ["Mike", "Sarah"],
+      "minDecisions": 0,
+      "minOpenQuestions": 0
+    }
+  },
+  {
+    "name": "decision-language",
+    "notes": "Roadmap planning\n- we agreed to go with the vendor proposal from last week\n- team decided to push the beta launch to Q4\n- Alex will update the roadmap doc to reflect this",
+    "expected": {
+      "minActionItems": 1,
+      "owners": ["Alex"],
+      "minDecisions": 1,
+      "minOpenQuestions": 0
+    }
+  },
+  {
+    "name": "open-questions-and-noise",
+    "notes": "Notes from standup\nAgenda: sprint review\nStill unclear who owns the migration timeline?\nHaven't heard back from finance on the budget, no update\nThis is just a note, not a task",
+    "expected": {
+      "minActionItems": 0,
+      "owners": [],
+      "minDecisions": 0,
+      "minOpenQuestions": 2
+    }
+  }
+]

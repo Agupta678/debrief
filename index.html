@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debrief — Meeting notes in. Stakeholder update out.</title>
+<meta name="description" content="Paste messy meeting notes. Get a clean, shareable stakeholder update — summary, decisions, owned action items, and open questions." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">§</span>
+      <span class="brand-name">Debrief</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#try-it">Try it</a>
+      <a href="#how">How it works</a>
+      <a href="https://github.com/" target="_blank" rel="noopener" class="nav-github">Source ↗</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span>Notes in, stakeholder update out</p>
+        <h1 class="hero-title text-balance">Every meeting produces<br />decisions. Most get lost<br />by Tuesday.</h1>
+        <p class="hero-sub">Paste the raw notes. Debrief writes the update — summary, decisions, owned action items, open questions — you were going to have to send anyway.</p>
+        <div class="hero-actions">
+          <a href="#try-it" class="btn btn-primary">Try it on your own notes</a>
+          <a href="#how" class="btn btn-ghost">See how it works</a>
+        </div>
+      </div>
+
+      <div class="demo-card" aria-label="Example: raw meeting notes transformed into action items">
+        <div class="demo-panel demo-raw">
+          <div class="demo-panel-head">
+            <span class="dot dot-a"></span><span class="dot dot-b"></span><span class="dot dot-c"></span>
+            <span class="demo-panel-label">raw_notes.txt</span>
+          </div>
+          <pre class="demo-raw-text" id="demoRawText"></pre>
+        </div>
+
+        <div class="demo-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="demo-panel demo-out">
+          <div class="demo-panel-head">
+            <span class="demo-panel-label">stakeholder_update — action items</span>
+          </div>
+          <div class="demo-items" id="demoItems"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRY IT -->
+  <section class="try-it" id="try-it">
+    <div class="wrap">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>Live tool — runs in your browser</p>
+      <h2 class="section-title">Run it on a real one</h2>
+      <p class="section-sub">Paste actual notes from your last meeting. Get back a Stakeholder Update document you can copy or download and send as-is.</p>
+
+      <div class="tool-grid">
+        <div class="tool-input-col">
+          <label class="tool-label" for="notesInput">Meeting notes</label>
+          <textarea id="notesInput" class="tool-textarea" placeholder="Paste your raw meeting notes here — bullet points, shorthand, whatever you actually typed during the call is fine.&#10;&#10;e.g.&#10;- sarah will send the deck by friday&#10;- need to escalate the export bug, 3 customers churned&#10;- mike to follow up with legal, no date yet"></textarea>
+          <div class="tool-actions">
+            <button class="btn btn-primary" id="extractBtn" type="button">Extract action items</button>
+            <button class="btn btn-ghost" id="sampleBtn" type="button">Load a sample</button>
+          </div>
+          <p class="tool-hint" id="toolHint">0 lines parsed</p>
+        </div>
+
+        <div class="tool-output-col">
+          <div class="tool-output-head">
+            <span class="tool-label">Stakeholder update</span>
+            <div class="tool-output-actions">
+              <span class="engine-badge" id="engineBadge"></span>
+              <button class="btn-icon" id="copyBtn" type="button" disabled>Copy as Markdown</button>
+              <button class="btn-icon" id="downloadBtn" type="button" disabled>Download .md</button>
+            </div>
+          </div>
+          <div class="tool-output" id="resultsArea">
+            <div class="empty-state">
+              <p>Your document will appear here — summary, decisions, owned action items, and open questions, ready to copy or download.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="wrap">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>The pipeline</p>
+      <h2 class="section-title">Three passes, in order</h2>
+      <ol class="how-steps">
+        <li class="how-step">
+          <span class="how-num">01</span>
+          <h3>Read for intent</h3>
+          <p>Every line gets scanned for the language people actually use to commit to something — "will," "needs to," "by Friday" — separating decisions from discussion.</p>
+        </li>
+        <li class="how-step">
+          <span class="how-num">02</span>
+          <h3>Attach an owner</h3>
+          <p>Names near a commitment get linked to it. An action item with no owner gets flagged instead of silently dropped.</p>
+        </li>
+        <li class="how-step">
+          <span class="how-num">03</span>
+          <h3>Rank by urgency</h3>
+          <p>Signals like "ASAP," "blocking," or a named deadline push an item up; open-ended items get marked for follow-up instead of buried.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ROADMAP / PROOF -->
+  <section class="proof">
+    <div class="wrap proof-inner">
+      <div class="proof-block">
+        <h3>Built in the open</h3>
+        <p>Extraction runs on Claude, with a deterministic local engine as fallback if the API call fails. Accuracy is scored against a fixture set checked into the repo — <code>npm run benchmark</code> — not claimed in a headline.</p>
+      </div>
+      <div class="proof-block">
+        <h3>One template, on purpose</h3>
+        <p>Debrief ships a single default — the Stakeholder Update — refined until it's reliably good, instead of a template gallery to pick through. A template picker is the planned v2, once this one earns its keep.</p>
+      </div>
+      <div class="proof-block">
+        <h3>Why "Debrief"</h3>
+        <p>A debrief is the moment after the work where you extract what happened and what's next. That's the whole product, named for exactly what it does.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>Debrief — built by Ashish Gupta, in public.</p>
+    <div class="footer-links">
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/analystgupta5/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
