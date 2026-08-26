@@ -6,7 +6,7 @@ Live demo runs entirely client-side against a local heuristic engine by default,
 
 ## Why this scope
 
-See [`PRD.md`](./PRD.md) for the full product requirements. Short version: Debrief deliberately ships **one** opinionated document template instead of a template picker. See PRD §2 and §7 for the reasoning and what's deferred to v2.
+See the [PRD](https://agupta678.github.io/debrief/prd.html) (or [`PRD.md`](./PRD.md)) for the full product requirements. Short version: Debrief deliberately ships **one** opinionated document template instead of a template picker. See PRD §2 and §7 for the reasoning and what's deferred to v2.
 
 ## Project structure
 
